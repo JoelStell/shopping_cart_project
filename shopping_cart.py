@@ -27,9 +27,7 @@ products = [
 
 # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-#
-# CAPTURE USER INPUTS
-#
+#User inputs
 
 product_ids = []
 
@@ -43,3 +41,25 @@ while True:
 def lookup_product_by_id(product_id):
     matching_products = [product for product in products if product["id"] == product_id]
     return matching_products[0] # because the line above gives us a list and we want to return a single item.
+
+#receipt
+
+running_total = 0
+
+print("-------------------------------")
+print("MY GROCERY STORE")
+print("-------------------------------")
+print("Web: www.mystore.com")
+print("Phone: 1.123.456.7890")
+print("Checkout Time: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%m:%S"))
+
+print("-------------------------------")
+print("Shopping Cart Items:")
+for product_id in product_ids:
+    product = lookup_product_by_id(product_id)
+    running_total += product["price"]
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
+
+print("-------------------------------")
+print("Subtotal:", '${0:.2f}'.format(running_total))
