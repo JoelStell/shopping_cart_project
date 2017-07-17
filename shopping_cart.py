@@ -63,3 +63,10 @@ for product_id in product_ids:
 
 print("-------------------------------")
 print("Subtotal:", '${0:.2f}'.format(running_total))
+tax = running_total * 0.08875
+print("Plus NYC Sales Tax (8.875%):", '${0:.2f}'.format(tax))
+total = running_total + tax
+print("Total:", '${0:.2f}'.format(total))
+
+print("-------------------------------")
+print("Thanks for your business! Please come again.")
